@@ -224,6 +224,14 @@ def create_sticker_pack(message):
         bot.edit_message_text(chat_id=user_id, text='Кликни по стикеру ^ чтобы добавить себе стикерпак!', message_id=message.message_id)
         # Получаем ссылку на созданный стикерпак
         sticker_pack_link = f'https://t.me/addstickers/{sticker_set_name}'
+
+        # Define the file path for storing sticker pack links
+        links_file_path = 'sticker_pack_links.txt'
+
+        # Append the sticker pack link to the file
+        with open(links_file_path, 'a') as links_file:
+            links_file.write(sticker_pack_link + '\n')
+
         bot.send_message(message.chat.id, f'Или воспользуйся ссылкой:\n{sticker_pack_link}')
 
     except Exception as e:
