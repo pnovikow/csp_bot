@@ -79,6 +79,7 @@ def reset_handler(message):
 
     # Create a directory for the user's stickers if it doesn't exist
     user_sticker_dir = f'assets/stickers_{user_id}'
+    os.makedirs(user_sticker_dir, exist_ok=True)
 
     # Delete the contents of the user's sticker directory
     for file_name in os.listdir(user_sticker_dir):
