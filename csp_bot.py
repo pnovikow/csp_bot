@@ -3,7 +3,7 @@ import os
 import requests
 
 # Инициализируем бота
-bot = telebot.TeleBot("5554833944:AAE14KSp7zE0ihRKMnZ_JlxMuXBX5gawdwM")
+bot = telebot.TeleBot("TG_TOKEN")
 
 # # Функция для отображения главного меню бота
 # def show_main_menu(message):
