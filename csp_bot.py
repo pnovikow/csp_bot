@@ -1,27 +1,10 @@
 import telebot
 import os
 import requests
+from telebot import types
 
 # Инициализируем бота
 bot = telebot.TeleBot("TG_TOKEN")
-
-# # Функция для отображения главного меню бота
-# def show_main_menu(message):
-#     user_id = message.from_user.id
-#     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-#     start_button = types.KeyboardButton('/start')
-#     configure_sticker_pack_button = types.KeyboardButton('/configure_sticker_pack')
-#     create_sticker_pack_button = types.KeyboardButton('/create_sticker_pack')
-#     markup.add(start_button, configure_sticker_pack_button, configure_sticker_pack_button)
-#     bot.send_message(user_id, "Главное меню бота:", reply_markup=markup)
-
-def help():
-    bot.edit_message_text(
-        f"Справка 1:\nподстрока:\n"
-        f"Справка пункт 2:"
-    )
-
-from telebot import types
 
 # Словарь для хранения параметров стикерпака пользователя
 user_sticker_pack_config = {}
@@ -95,7 +78,7 @@ def reset_handler(message):
     user_id = message.from_user.id
 
     # Create a directory for the user's stickers if it doesn't exist
-    user_sticker_dir = f'stickers_{user_id}'
+    user_sticker_dir = f'assets/stickers_{user_id}'
 
     # Delete the contents of the user's sticker directory
     for file_name in os.listdir(user_sticker_dir):
@@ -134,7 +117,7 @@ def sticker_handler(message):
     user_id = message.from_user.id
 
     # Create a directory for the user's stickers if it doesn't exist
-    user_sticker_dir = f'stickers_{user_id}'
+    user_sticker_dir = f'assets/stickers_{user_id}'
     os.makedirs(user_sticker_dir, exist_ok=True)
 
     # Получаем информацию о стикере
@@ -167,7 +150,7 @@ def create_sticker_pack(message):
     # Get the user's ID
     user_id = message.from_user.id
     # Create a directory for the user's stickers if it doesn't exist
-    user_sticker_dir = f'stickers_{user_id}'
+    user_sticker_dir = f'assets/stickers_{user_id}'
 
     # Получаем список файлов в каталоге "stickers"
     sticker_files = [
